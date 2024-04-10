@@ -23,4 +23,13 @@ class Networkscanner:
         self.getalive()
         #print the alive host
         self.printalive()
+    #Method for creating APR packet
+    def create_packet(self):
+        #creating layer 1 (ethernet) and layer 2 (ARP)
+        layer1 =scapy.Ether(dst='ff:ff:ff:ff:ff:ff')
+        layer2=scapy.ARP(pdst=self.host)
+        #combine both the layers and store in self.packet
+        self.packet=layer1 / layer2
+
+
 
