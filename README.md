@@ -1,4 +1,4 @@
-This is the Network scanning tool made for linux operating system it is use to find the live connected host for given range of ip addresses and it is also use to tell the vendor name name of that ip addresses if it's present very soon we are going to get the next update for this tool
+This is the Network scanning tool made for linux operating system it is use to find the live connected host for given range of ip addresses and it is also use to tell the vendor name name of that ip addresses if it's present ,very soon we are going to get the next update for this tool
 
 {note:- this tool were not going to run in windows operating system }
 
