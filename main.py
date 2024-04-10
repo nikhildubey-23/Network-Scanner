@@ -47,7 +47,25 @@ class Networkscanner:
         for send , received in slef.ans:
             #store mac address of the alive host in self.alive
             self.alive[received.psrc]=received.hwsrc
-    
+    #Method to print the alive hosts
+    def printalive(self):
+        #create a prettytbale object to store and display the results
+        table = prettytable.PrettyTable(['IP','MAC','VENDOR'])
+        #iterate through the alive hosts
+        for ip , mac in self.alive.items():
+            #try to lookup the mac address
+            try:  
+                #add the mac address and vendor to the prettytable  
+                table.add_row([ip , mac , MacLookup.lookup(mac)])
+            #catch any exception that may occur during the lookup
+            except Exception as e:
+                #print an error message and add the mac address and " unknown_vendor " to the prettytable
+                print(f"Error looking up MAC {mac} : {e}")
+                table.add_row([ip , mac , "Unknown Vendor"])
+        #print the prettytable 
+        print(table)
+
+        
     
     
 
