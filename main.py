@@ -69,7 +69,7 @@ def get_args():
     #create an ArgumentParser object
     parser = ArgumentParser(description='Network Scanner')
     #Add argument for start and end ip addresses
-    parser.add_argument('--s',dest='start_ip',help='start Ip address in the format x.x.x.x')
+    parser.add_argument('--s',dest='start_ip',help='Start Ip address in the formate x.x.x.x')
     parser.add_argument('--e',dest='end_ip',help='End ip address in the formate x.x.x.x')
     #parse the arguments 
     args = parser.parse_args()
