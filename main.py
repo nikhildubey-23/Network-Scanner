@@ -44,7 +44,7 @@ class Networkscanner:
     #Method to get the alive hosts from the received responses
     def getalive(self):
         #iterate through the received responses
-        for send , received in slef.ans:
+        for send , received in self.ans:
             #store mac address of the alive host in self.alive
             self.alive[received.psrc]=received.hwsrc
     #Method to print the alive hosts
@@ -76,7 +76,7 @@ def get_args():
     #check if the start_ip address and end_ip address are provided 
     if not args.start_ip or not args.end_ip:
         #print help message and exit the program if start_ip or end_ip are not provided
-        parser.print_help(sys.stdree)
+        parser.print_help(sys.stderr)
         sys.exit(1)
     
     #convert start_ip and end_ip to long integers
@@ -101,7 +101,7 @@ def get_args():
     return hosts
 
 #calling the get_args()
-host = get_args()
+hosts = get_args()
 #creating object for class and providing the value as hosts
 Networkscanner(hosts)
 
