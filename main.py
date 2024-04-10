@@ -15,4 +15,12 @@ class Networkscanner:
         self.host=host
         #initialize an empty dictionary to store alive hosts
         self.alive={}
+        #create an ARP packet for scanning
+        self.create_packet()
+        #send ARP packet to the host
+        self.sendpacket()
+        #get the alive hosts from the received responses
+        self.getalive()
+        #print the alive host
+        self.printalive()
 
