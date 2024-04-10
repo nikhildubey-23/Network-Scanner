@@ -41,6 +41,12 @@ class Networkscanner:
             #print an error message and exit the program if no hosts are alive
             print("No Host Is Alive")
             sys.exit(1)
+    #Method to get the alive hosts from the received responses
+    def getalive(self):
+        #iterate through the received responses
+        for send , received in slef.ans:
+            #store mac address of the alive host in self.alive
+            self.alive[received.psrc]=received.hwsrc
     
     
     
