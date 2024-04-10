@@ -64,6 +64,49 @@ class Networkscanner:
                 table.add_row([ip , mac , "Unknown Vendor"])
         #print the prettytable 
         print(table)
+#Function for getting arguments form the command line         
+def get_args():
+    #create an ArgumentParser object
+    parser = ArgumentParser(description='Network Scanner')
+    #Add argument for start and end ip addresses
+    parser.add_argument('--s',dest='start_ip',help='start Ip address in the format x.x.x.x')
+    parser.add_argument('--e',dest='end_ip',help='End ip address in the formate x.x.x.x')
+    #parse the arguments 
+    args = parser.parse_args()
+    #check if the start_ip address and end_ip address are provided 
+    if not args.start_ip or not args.end_ip:
+        #print help message and exit the program if start_ip or end_ip are not provided
+        parser.print_help(sys.stdree)
+        sys.exit(1)
+    
+    #convert start_ip and end_ip to long integers
+    start_ip=socket.inet_aton(args.start_ip)
+    end_ip = socket.inet_aton(args.end_ip)
+
+    #unpack start_ip and end_ip as unsigned 32-bit
+    start_ip_long = struct.unpack("!I",start_ip)[0]
+    end_ip_long = struct.unpack("!I",end_ip)[0]
+
+    #range(start_ip_long, end_ip_long + 1): This generates a sequence of numbers from start_ip_long to end_ip_long (inclusive).
+
+    #struct.pack("!I", ip_long): This converts the integer ip_long to a 4-byte binary string, which represents the IP address in network byte order.
+
+    #socket.inet_ntoa(binary_string): This converts the binary string to a dotted-decimal string, which represents the IP address in human-readable format.
+
+    #[expression for variable in sequence]: This is a list comprehension, which generates a list of values by applying the expression to each variable in the sequence.
+    hosts=[socket.inet_ntoa(struct.pack("!I",ip_long))for ip_long in range(start_ip_long, end_ip_long +1)]
+
+    #So, the line hosts = [socket.inet_ntoa(struct.pack("!I", ip_long)) for ip_long in range(start_ip_long, end_ip_long + 1)] generates a list of IP addresses in the range from start_ip_long to end_ip_long (inclusive).
+    
+    return hosts
+
+#calling the get_args()
+host = get_args()
+#creating object for class and providing the value as hosts
+Networkscanner(hosts)
+
+
+
 
         
     
