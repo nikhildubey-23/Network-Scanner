@@ -30,6 +30,20 @@ class Networkscanner:
         layer2=scapy.ARP(pdst=self.host)
         #combine both the layers and store in self.packet
         self.packet=layer1 / layer2
+    #Method to send the ARP packet and receive responses
+    def sendpacket(self):
+        #send the ARP packet and store the results in self.ans
+        ans , unans = scapy.srp(self.packet,timeout=1,verbose=False)
+        if ans:
+            #set self.ans to the received responses if any
+            self.ans=ans
+        else:
+            #print an error message and exit the program if no hosts are alive
+            print("No Host Is Alive")
+            sys.exit(1)
+    
+    
+    
 
 
 
