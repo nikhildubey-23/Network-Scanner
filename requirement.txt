@@ -1,0 +1,4 @@
+prettytable
+mac_vendor_lookup
+socket
+scapy
